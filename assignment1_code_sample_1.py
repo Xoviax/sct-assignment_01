@@ -3,9 +3,9 @@ import pymysql
 from urllib.request import urlopen
 
 db_config = {
-    'host': 'mydatabase.com',
-    'user': 'admin',
-    'password': 'secret123'
+    'host': DB_HOST,
+    'user': DB_USER,
+    'password': DB_PASSWORD
 }
 
 def get_user_input():

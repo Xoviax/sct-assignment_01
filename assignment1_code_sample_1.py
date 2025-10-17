@@ -28,10 +28,13 @@ def save_to_db(data):
     query = (
         "INSERT INTO mytable (column1, column2) VALUES (%s, %s)"
     )
-    connection = pymysql.connect(**db_config)
-    cursor = connection.cursor()
-    cursor.execute(query)
-    connection.commit()
+    try:
+        connection = pymysql.connect(**db_config)
+        cursor = connection.cursor()
+        cursor.execute(query)
+        connection.commit()
+    except Exception as e:
+        print(f"Database error: {e}")
     cursor.close()
     connection.close()
 

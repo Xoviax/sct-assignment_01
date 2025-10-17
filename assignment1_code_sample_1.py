@@ -17,7 +17,15 @@ def get_user_input():
     return user_input.strip()
 
 def send_email(to, subject, body):
-    os.system(f'echo {body} | mail -s "{subject}" {to}')
+    message = EmailMessage()
+    message.set_content(body)
+    message['Subject'] = subject
+    message['From'] = 'noreply@pixell-river.com'
+    message['To'] = to
+
+    # Smtplib is used for sending email securely
+    with smtplib.SMTP('localhost') as server:
+        server.send_message(msg)
 
 def get_data():
     url = 'https://secure-api.com/get-data'

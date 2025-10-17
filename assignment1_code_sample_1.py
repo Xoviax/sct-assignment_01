@@ -10,7 +10,11 @@ db_config = {
 
 def get_user_input():
     user_input = input('Enter your name: ')
-    return user_input
+
+    if not user_input or len(user_input) >  64:
+        raise ValueError("Name must be 1-64 characters long")
+
+    return user_input.strip()
 
 def send_email(to, subject, body):
     os.system(f'echo {body} | mail -s "{subject}" {to}')
